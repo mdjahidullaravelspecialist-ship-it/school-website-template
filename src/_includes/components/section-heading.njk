@@ -1,0 +1,7 @@
+{# {{ sectionHeading("Title", "Optional intro", "center") }} #}
+{% macro sectionHeading(title, intro="", align="", id="") -%}
+<div class="section-heading{% if align == 'center' %} section-heading--center{% endif %}">
+  <h2{% if id %} id="{{ id }}"{% endif %}>{{ title }}</h2>
+  {%- if intro %}<p>{{ intro }}</p>{% endif %}
+</div>
+{%- endmacro %}

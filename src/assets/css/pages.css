@@ -1,0 +1,12 @@
+/* ==========================================================================
+   PAGE-SPECIFIC STYLES (home hero, etc.) — added in later phases.
+   Style-guide page helpers live here for now.
+   ========================================================================== */
+.sg-swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--s-3); }
+.sg-swatch { border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; font-size: var(--fs-sm); background: #fff; }
+.sg-swatch__chip { height: 72px; }
+.sg-swatch__meta { padding: var(--s-2) var(--s-3); }
+.sg-swatch__meta strong { display: block; }
+.sg-row { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
+.sg-block + .sg-block { margin-top: var(--s-7); }
+.sg-code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: var(--fs-sm); color: var(--text-muted); }

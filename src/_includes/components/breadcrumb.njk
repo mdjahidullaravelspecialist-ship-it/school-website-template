@@ -1,0 +1,8 @@
+{# Expects `crumbs` = [{label, url}, ...] ending with the current page. Built in layouts/page.njk #}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    {%- for c in crumbs %}
+    <li>{% if loop.last %}<span aria-current="page">{{ c.label }}</span>{% else %}<a href="{{ c.url }}">{{ c.label }}</a>{% endif %}</li>
+    {%- endfor %}
+  </ol>
+</nav>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- set pageTitle = (title ~ " | " ~ site.name) if (title and page.url != "/") else (site.name ~ " — " ~ site.tagline) %}
+  {%- set pageDesc = description or site.description %}
+  {%- set canonical = site.url ~ page.url %}
+  {%- set ogImage = (ogImage or site.ogImage) | absoluteUrl(site.url) %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDesc }}">
+  <link rel="canonical" href="{{ canonical }}">
+  {%- if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  <meta name="theme-color" content="{{ site.theme.primary }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta property="og:description" content="{{ pageDesc }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ ogImage }}">
+  <meta property="og:locale" content="{{ site.locale }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ pageTitle }}">
+  <meta name="twitter:description" content="{{ pageDesc }}">
+  <meta name="twitter:image" content="{{ ogImage }}">
+
+  <link rel="icon" href="{{ site.favicon }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ site.theme.fonts.googleFontsUrl }}">
+  {% include "components/theme-vars.njk" %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>document.documentElement.className = "js";</script>
+
+  <script type="application/ld+json">{{ site | orgSchema | safe }}</script>
+  {%- if crumbs and crumbs.length > 1 %}
+  <script type="application/ld+json">{{ crumbs | breadcrumbSchema(site) | safe }}</script>
+  {%- endif %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  {% include "components/announcement-bar.njk" %}
+  {% include "components/header.njk" %}
+  <main id="main" tabindex="-1">
+    {{ content | safe }}
+  </main>
+  {% include "components/footer.njk" %}
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+---
+layout: layouts/page.njk
+title: Design system
+lead: Tokens and components used across the template. This page is for developers and is hidden from search engines.
+noindex: true
+eleventyExcludeFromCollections: true
+---
+{% from "components/button.njk" import button %}
+{% from "components/form-field.njk" import field %}
+{% from "components/section-heading.njk" import sectionHeading %}
+<section class="section">
+  <div class="container">
+
+    <div class="sg-block">
+      {{ sectionHeading("Colors", "Set in site.json. Tints and shades are derived automatically.") }}
+      <div class="sg-swatches">
+        {%- for s in [
+          ["Primary", "var(--color-primary)"], ["Primary 700", "var(--primary-700)"], ["Primary 100", "var(--primary-100)"], ["Primary 50", "var(--primary-50)"],
+          ["Secondary", "var(--color-secondary)"], ["Accent", "var(--color-accent)"],
+          ["Surface alt", "var(--surface-alt)"], ["Line", "var(--line)"], ["Text", "var(--text)"], ["Text muted", "var(--text-muted)"]
+        ] %}
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:{{ s[1] }}"></div><div class="sg-swatch__meta"><strong>{{ s[0] }}</strong><span class="sg-code">{{ s[1] }}</span></div></div>
+        {%- endfor %}
+      </div>
+    </div>
+
+    <div class="sg-block">
+      {{ sectionHeading("Typography", "Serif headings for authority, a Bangla-capable sans for reading.") }}
+      <h1>Heading one: academic excellence</h1>
+      <h2>Heading two: our programs</h2>
+      <h3>Heading three: facilities</h3>
+      <h4>Heading four: card title</h4>
+      <p class="prose">Body text is set at 17px with a 1.65 line height and a 68-character measure. Bangla text gets extra line height automatically: <span lang="bn">আমাদের বিদ্যালয়ে স্বাগতম।</span></p>
+      <p class="text-muted text-sm">Small muted text for dates and metadata.</p>
+    </div>
+
+    <div class="sg-block">
+      {{ sectionHeading("Buttons and badges") }}
+      <div class="sg-row">
+        {{ button("Apply for admission", "#", "primary") }}
+        {{ button("Read more", "#", "secondary") }}
+        {{ button("Download form", "#", "accent") }}
+        <span class="on-dark" style="background:var(--color-secondary);padding:var(--s-3);border-radius:var(--r-md)">{{ button("Explore the school", "#", "ghost-light") }}</span>
+        {{ button("Small", "#", "primary", "btn--sm") }}
+        <button class="btn btn--primary is-loading" type="button">Sending</button>
+        <button class="btn btn--primary" type="button" disabled>Disabled</button>
+      </div>
+      <div class="sg-row" style="margin-top:var(--s-3)">
+        <span class="badge">Admission</span><span class="badge badge--urgent">Urgent</span><span class="badge badge--neutral">Exam</span>
+      </div>
+    </div>
+
+    <div class="sg-block">
+      {{ sectionHeading("Cards") }}
+      <div class="grid grid--3">
+        <article class="card card--link">
+          <div class="card__media"></div>
+          <div class="card__body">
+            <span class="badge" style="align-self:flex-start">Admission</span>
+            <h3 class="card__title"><a href="#">Admission circular for the 2027 session</a></h3>
+            <p class="card__meta"><span>12 October 2026</span><span>PDF, 240 KB</span></p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__body">
+            <h3 class="card__title">Plain card</h3>
+            <p>Cards are flat, with a 1px border and a 6px radius. Only linked cards respond to hover.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="sg-block">
+      {{ sectionHeading("Forms", "Errors name the problem and the fix. Required fields are announced to screen readers.") }}
+      <form class="form" style="max-width:640px" novalidate>
+        <div class="form-row form-row--2">
+          {{ field("sg-name", "Student's full name", "text", true) }}
+          {{ field("sg-phone", "Guardian's phone", "tel", true, "We will call this number about your inquiry.") }}
+        </div>
+        {{ field("sg-class", "Class applying for", "select", true, "", ["Class 1", "Class 6", "Class 9", "Class 11"]) }}
+        <div class="field has-error" data-field>
+          <label class="field__label" for="sg-email">Email</label>
+          <input class="input" id="sg-email" type="email" value="parent@example" aria-invalid="true" aria-describedby="sg-email-error">
+          <span class="field__error" id="sg-email-error">Enter a full email address, such as name@example.com.</span>
+        </div>
+        {{ field("sg-msg", "Message", "textarea") }}
+        <div><button class="btn btn--primary" type="button">Send inquiry</button></div>
+      </form>
+    </div>
+
+    <div class="sg-block">
+      {{ sectionHeading("Alerts, empty and loading states") }}
+      <div class="stack" style="max-width:720px">
+        <div class="alert alert--success" role="status"><strong>Inquiry sent</strong>The admission office will call you within two working days.</div>
+        <div class="alert alert--error" role="alert"><strong>We couldn't send your inquiry</strong>Check your connection and try again, or call the office.</div>
+        <div class="alert alert--warning"><strong>Closing soon</strong>Applications close on 30 November.</div>
+        <div class="alert alert--info"><strong>Demo content</strong>Replace this text before launch.</div>
+        <div class="empty-state"><h3>No notices match your search</h3><p>Try a different word, or clear the category filter to see all notices.</p></div>
+        <div class="skeleton" style="height:20px;width:60%"></div>
+        <div class="skeleton" style="height:20px"></div>
+      </div>
+    </div>
+
+    <div class="sg-block">
+      {{ sectionHeading("Table and pagination") }}
+      <div class="table-wrap">
+        <table class="table">
+          <caption>Admission fees (demo)</caption>
+          <thead><tr><th scope="col">Class</th><th scope="col">Admission fee</th><th scope="col">Monthly fee</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Class 1–5</th><td>BDT 5,000</td><td>BDT 1,200</td></tr>
+            <tr><th scope="row">Class 6–10</th><td>BDT 6,000</td><td>BDT 1,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:var(--s-4)">
+        {% set pg = { current: 2, total: 5, base: "/notices/" } %}{% include "components/pagination.njk" %}
+      </div>
+    </div>
+
+  </div>
+</section>

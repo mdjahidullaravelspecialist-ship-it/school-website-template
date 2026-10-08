@@ -1,0 +1,51 @@
+{% set chev %}<svg class="nav__chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset %}
+<header class="site-header" data-site-header>
+  <div class="utility-bar">
+    <div class="container utility-bar__inner">
+      <ul aria-label="Quick contact">
+        <li><a href="tel:{{ site.contact.phoneHref }}">{{ site.contact.phone }}</a></li>
+        <li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
+      </ul>
+      <span>{{ site.contact.officeHours[0].days }}, {{ site.contact.officeHours[0].hours }}</span>
+    </div>
+  </div>
+  <div class="container header-main">
+    <a class="brand" href="/" aria-label="{{ site.name }} — home">
+      <img src="{{ site.logo.src }}" alt="" width="{{ site.logo.width }}" height="{{ site.logo.height }}">
+      <span>
+        <span class="brand__name">{{ site.name }}</span>
+        <span class="brand__tag">{{ site.tagline }}</span>
+      </span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+      <span class="menu-toggle__bars" aria-hidden="true"></span>
+      <span data-menu-label>Menu</span>
+    </button>
+
+    <div class="nav-panel" id="site-nav" data-nav-panel>
+      <nav aria-label="Main">
+        <ul class="nav">
+          {%- for item in navigation.main %}
+          <li class="nav__item{% if item.children | hasUrl(page.url) %} is-current{% endif %}">
+            {%- if item.children %}
+            <button class="nav__link nav__toggle" type="button" aria-expanded="false" aria-controls="sub-{{ loop.index }}">{{ item.label }}{{ chev | safe }}</button>
+            <ul class="nav__sub" id="sub-{{ loop.index }}">
+              {%- for c in item.children %}
+              <li><a href="{{ c.url }}"{% if page.url == c.url %} aria-current="page"{% endif %}>{{ c.label }}</a></li>
+              {%- endfor %}
+            </ul>
+            {%- else %}
+            <a class="nav__link" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+            {%- endif %}
+          </li>
+          {%- endfor %}
+        </ul>
+      </nav>
+      {%- if site.admission.isOpen %}
+      <a class="btn btn--primary btn--sm header-cta" href="{{ site.admission.url }}">{{ site.admission.ctaLabel }}</a>
+      <a class="btn btn--primary btn--block nav-panel__cta" href="{{ site.admission.url }}">{{ site.admission.ctaLabel }}</a>
+      {%- endif %}
+    </div>
+  </div>
+</header>

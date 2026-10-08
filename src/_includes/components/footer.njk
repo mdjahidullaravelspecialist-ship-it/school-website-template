@@ -1,0 +1,48 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">
+        <img src="{{ site.logo.src }}" alt="" width="40" height="40" loading="lazy">
+        <span>{{ site.name }}</span>
+      </div>
+      <p>{{ site.tagline }}.</p>
+      {%- set links = [] %}
+      <ul class="footer-list" aria-label="Social media" style="margin-top:var(--s-3)">
+        {%- for name, url in site.social %}{% if url %}
+        <li><a href="{{ url }}" rel="noopener" target="_blank">{{ name | capitalize }}<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        {%- endif %}{% endfor %}
+      </ul>
+    </div>
+    <nav aria-label="Footer">
+      <h2>Quick links</h2>
+      <ul class="footer-list">
+        {%- for l in navigation.footerLinks %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
+      </ul>
+    </nav>
+    <div>
+      <h2>Contact</h2>
+      <address style="font-style:normal">
+        <p>{{ site.contact.address.full }}</p>
+        <p><a href="tel:{{ site.contact.phoneHref }}">{{ site.contact.phone }}</a><br>
+        <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></p>
+      </address>
+    </div>
+    <div>
+      <h2>Office hours</h2>
+      <dl class="footer-list">
+        {%- for h in site.contact.officeHours %}
+        <div><dt>{{ h.days }}</dt><dd style="margin:0">{{ h.hours }}</dd></div>
+        {%- endfor %}
+      </dl>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom__inner">
+      <span>&copy; {% year %} {{ site.name }}. All rights reserved.</span>
+      {%- if site.footer.credit %}<span>{{ site.footer.credit }}</span>{% endif %}
+    </div>
+  </div>
+</footer>
+<button class="scroll-top" type="button" aria-label="Back to top" data-scroll-top>
+  <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M3 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>

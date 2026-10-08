@@ -1,0 +1,16 @@
+{
+  "name": "school-website-template",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "White-label school & college website template built with Eleventy.",
+  "scripts": {
+    "dev": "eleventy --serve --quiet",
+    "build": "eleventy",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "engines": { "node": ">=18" }
+}

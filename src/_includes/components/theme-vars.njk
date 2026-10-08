@@ -1,0 +1,10 @@
+{# Injects brand values from site.json as CSS variables. Do not hard-code colors elsewhere. #}
+<style>
+:root{
+  --color-primary:{{ site.theme.primary }};
+  --color-secondary:{{ site.theme.secondary }};
+  --color-accent:{{ site.theme.accent }};
+  --font-heading:"{{ site.theme.fonts.heading }}","Noto Serif Bengali",Georgia,"Times New Roman",serif;
+  --font-body:"{{ site.theme.fonts.body }}","Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+</style>

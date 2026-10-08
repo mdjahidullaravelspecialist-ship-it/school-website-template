@@ -1,0 +1,5 @@
+{# Usage: {% from "components/button.njk" import button %}{{ button("Label", "/url/", "primary") }}
+   variants: primary | secondary | accent | ghost-light.  extra: "btn--sm", "btn--block" #}
+{% macro button(label, href, variant="primary", extra="") -%}
+<a class="btn btn--{{ variant }} {{ extra }}" href="{{ href }}">{{ label }}</a>
+{%- endmacro %}

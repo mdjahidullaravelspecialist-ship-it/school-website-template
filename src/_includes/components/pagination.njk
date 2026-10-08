@@ -1,0 +1,10 @@
+{# {% set pg = {current: 2, total: 5, base: "/notices/"} %}{% include "components/pagination.njk" %} #}
+<nav class="pagination" aria-label="Pagination">
+  <ul>
+    <li>{% if pg.current > 1 %}<a href="{{ pg.base }}{% if pg.current > 2 %}page/{{ pg.current - 1 }}/{% endif %}" rel="prev">Previous</a>{% else %}<span class="is-disabled" aria-disabled="true">Previous</span>{% endif %}</li>
+    {%- for n in range(1, pg.total + 1) %}
+    <li>{% if n == pg.current %}<span aria-current="page"><span class="visually-hidden">Page </span>{{ n }}</span>{% else %}<a href="{{ pg.base }}{% if n > 1 %}page/{{ n }}/{% endif %}"><span class="visually-hidden">Page </span>{{ n }}</a>{% endif %}</li>
+    {%- endfor %}
+    <li>{% if pg.current < pg.total %}<a href="{{ pg.base }}page/{{ pg.current + 1 }}/" rel="next">Next</a>{% else %}<span class="is-disabled" aria-disabled="true">Next</span>{% endif %}</li>
+  </ul>
+</nav>

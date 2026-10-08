@@ -1,0 +1,8 @@
+{% if site.announcement.enabled %}
+<div class="announcement" role="region" aria-label="Announcement">
+  <div class="container announcement__inner">
+    <span>{{ site.announcement.text }}</span>
+    {% if site.announcement.linkUrl %}<a href="{{ site.announcement.linkUrl }}">{{ site.announcement.linkLabel }}</a>{% endif %}
+  </div>
+</div>
+{% endif %}

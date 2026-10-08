@@ -1,0 +1,70 @@
+{
+  "_demo": "DEMO CONTENT. Replace every value in this file for a real client. This is the single source of truth for branding and contact details.",
+
+  "name": "Greenfield School & College",
+  "shortName": "GSC",
+  "tagline": "Knowledge, character and service",
+  "description": "Greenfield School & College is a co-educational institution offering primary, secondary and higher secondary education with a focus on strong fundamentals and good character.",
+  "url": "https://www.example-school.edu.bd",
+  "lang": "en",
+  "locale": "en_BD",
+  "established": "1998",
+
+  "logo": { "src": "/assets/images/school-logo.svg", "alt": "Greenfield School & College logo", "width": 48, "height": 48 },
+  "favicon": "/assets/images/favicon.svg",
+  "ogImage": "/assets/images/og-default.jpg",
+
+  "theme": {
+    "primary": "#0E5A4B",
+    "secondary": "#12263A",
+    "accent": "#D9A441",
+    "fonts": {
+      "heading": "Newsreader",
+      "body": "Hind Siliguri",
+      "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+    }
+  },
+
+  "contact": {
+    "phone": "+880 1XXX-XXXXXX",
+    "phoneHref": "+8801000000000",
+    "email": "info@example-school.edu.bd",
+    "address": {
+      "street": "1 School Road, Sample Area",
+      "city": "Chattogram",
+      "country": "BD",
+      "full": "1 School Road, Sample Area, Chattogram, Bangladesh"
+    },
+    "officeHours": [
+      { "days": "Sunday – Thursday", "hours": "8:00 am – 4:00 pm" },
+      { "days": "Friday – Saturday", "hours": "Closed" }
+    ],
+    "mapLink": "https://maps.google.com/?q=Chattogram",
+    "mapEmbedUrl": ""
+  },
+
+  "social": {
+    "facebook": "https://facebook.com/example",
+    "youtube": "https://youtube.com/@example",
+    "instagram": ""
+  },
+
+  "admission": {
+    "isOpen": true,
+    "session": "2027",
+    "ctaLabel": "Apply for admission",
+    "url": "/admission/"
+  },
+
+  "announcement": {
+    "enabled": true,
+    "text": "Admission for the 2027 session is open until 30 November.",
+    "linkLabel": "See details",
+    "linkUrl": "/admission/"
+  },
+
+  "footer": { "credit": "" },
+
+  "formEndpoint": "",
+  "formEndpointNote": "Leave empty in the template. Point to a Laravel route such as /api/v1/inquiries when the backend exists."
+}

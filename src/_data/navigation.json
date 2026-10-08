@@ -1,0 +1,31 @@
+{
+  "main": [
+    { "label": "Home", "url": "/" },
+    { "label": "About", "children": [
+      { "label": "About the school", "url": "/about/" },
+      { "label": "Principal's message", "url": "/principal/" },
+      { "label": "Facilities", "url": "/facilities/" },
+      { "label": "Achievements", "url": "/achievements/" }
+    ]},
+    { "label": "Academics", "children": [
+      { "label": "Programs and curriculum", "url": "/academics/" },
+      { "label": "Teachers and staff", "url": "/teachers/" },
+      { "label": "Results", "url": "/results/" }
+    ]},
+    { "label": "Notices and events", "children": [
+      { "label": "Notice board", "url": "/notices/" },
+      { "label": "Events", "url": "/events/" }
+    ]},
+    { "label": "Gallery", "url": "/gallery/" },
+    { "label": "Student life", "url": "/student-life/" },
+    { "label": "Contact", "url": "/contact/" }
+  ],
+  "footerLinks": [
+    { "label": "About the school", "url": "/about/" },
+    { "label": "Academics", "url": "/academics/" },
+    { "label": "Teachers and staff", "url": "/teachers/" },
+    { "label": "Notice board", "url": "/notices/" },
+    { "label": "Admission", "url": "/admission/" },
+    { "label": "Results", "url": "/results/" }
+  ]
+}

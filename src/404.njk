@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: Page not found
+permalink: /404.html
+noindex: true
+eleventyExcludeFromCollections: true
+---
+{% from "components/button.njk" import button %}
+<section class="section">
+  <div class="container prose">
+    <h1>We can't find that page</h1>
+    <p>The link may be out of date, or the page may have moved. Try one of these instead.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-4)">
+      {{ button("Go to the home page", "/", "primary") }}
+      {{ button("Browse notices", "/notices/", "secondary") }}
+      {{ button("Contact the office", "/contact/", "secondary") }}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+{# {{ field("name", "Student's full name", "text", true, "As on the birth certificate") }}
+   Types: text | email | tel | textarea | select (pass options array as 6th arg) #}
+{% macro field(id, label, type="text", required=false, hint="", options=[]) -%}
+<div class="field" data-field>
+  <label class="field__label" for="{{ id }}">{{ label }}{% if required %}<span class="req" aria-hidden="true">*</span><span class="visually-hidden"> (required)</span>{% endif %}</label>
+  {%- if hint %}<span class="field__hint" id="{{ id }}-hint">{{ hint }}</span>{% endif %}
+  {%- set describedby = (id ~ "-hint " if hint else "") ~ id ~ "-error" %}
+  {%- if type == "textarea" %}
+  <textarea class="textarea" id="{{ id }}" name="{{ id }}"{% if required %} required{% endif %} aria-describedby="{{ describedby }}"></textarea>
+  {%- elif type == "select" %}
+  <select class="select" id="{{ id }}" name="{{ id }}"{% if required %} required{% endif %} aria-describedby="{{ describedby }}">
+    <option value="">Select…</option>
+    {%- for o in options %}<option value="{{ o }}">{{ o }}</option>{% endfor %}
+  </select>
+  {%- else %}
+  <input class="input" id="{{ id }}" name="{{ id }}" type="{{ type }}"{% if required %} required{% endif %} aria-describedby="{{ describedby }}"{% if type == "email" %} autocomplete="email" inputmode="email"{% elif type == "tel" %} autocomplete="tel" inputmode="tel"{% endif %}>
+  {%- endif %}
+  <span class="field__error" id="{{ id }}-error" role="alert"></span>
+</div>
+{%- endmacro %}
